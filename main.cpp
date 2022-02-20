@@ -10,6 +10,14 @@ using namespace std;
 
 const double Pi = 3.14159265358979323;
 
+void Circle(int string, std::string storage[]){
+
+}
+
+void Triangle(int string, std::string storage[]){
+    
+}
+
 int main(){
     int counter = 0;
     int storage_size = 100;
@@ -45,4 +53,5 @@ int main(){
         }
         verif_counter = 0;
     }
+    return 0;
 }
