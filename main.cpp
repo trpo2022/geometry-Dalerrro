@@ -24,4 +24,25 @@ int main(){
     } else {
         printf("Open File Error");
     }
+    
+    int verif_counter = 0;
+    for (int counter_f = 0; counter_f < counter; counter_f++) {
+        std::size_t found;
+        found = storage[counter_f].find("circle");
+        if (found != std::string::npos) {
+            verif_counter++;
+            Circle(counter_f, storage);
+        }
+
+        found = storage[counter_f].find("triangle");
+        if (found != std::string::npos) {
+            verif_counter++;
+            Triangle(counter_f, storage);
+        }
+
+        if (verif_counter == 0) {
+            printf("\nError in %d line", counter_f + 1);
+        }
+        verif_counter = 0;
+    }
 }
