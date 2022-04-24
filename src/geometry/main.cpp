@@ -21,14 +21,12 @@ int main()
     Circle Circle_mass[figure_limit];
     Triangle Triangle_mass[figure_limit];
 
-
-    //Open file
+    // Open file
     std::cout << "\n The program accepts format files as input .wkt!";
     std::cout << "\n Enter the file name: ";
-    std::cin  >> file_name;
+    std::cin >> file_name;
 
-
-    std::ifstream in (file_name);
+    std::ifstream in(file_name);
     if (in.is_open()) {
         while (getline(in, line)) {
             storage[counter] = line;
@@ -37,7 +35,6 @@ int main()
     } else {
         printf(" !Open File Error\n !File not found");
     }
-
 
     // Search for shapes in a string
     int check = 0;
@@ -68,7 +65,7 @@ int main()
             Triangle_counter++;
         }
 
-        // Error 
+        // Error
         if (check == 0) {
             printf("\n\n #Error in %d line, «circle» , «triangle»  not found",
                    counter_f + 1);
@@ -79,8 +76,8 @@ int main()
     }
 
     // checking inersect
-    
-     // Output of results
+
+    // Output of results
 
     int fig_counter = Triangle_counter + Circle_counter + 1;
     int Triangle_pr = 0;
@@ -90,11 +87,21 @@ int main()
         if (Triangle_mass[Triangle_pr].Order == counter_f) {
             Triangle_print(Triangle_mass[Triangle_pr], storage);
             printf("      intersects:\n");
-            Triangle_intersec(Triangle_mass[Triangle_pr], Circle_mass, Circle_counter, Triangle_mass, Triangle_counter);
+            Triangle_intersec(
+                    Triangle_mass[Triangle_pr],
+                    Circle_mass,
+                    Circle_counter,
+                    Triangle_mass,
+                    Triangle_counter);
             Triangle_pr++;
         } else if (Circle_mass[Circle_pr].Order == counter_f) {
             Circle_print(Circle_mass[Circle_pr], storage);
-            Circle_intersec(Circle_mass[Circle_pr], Circle_mass, Circle_counter, Triangle_mass, Triangle_counter);
+            Circle_intersec(
+                    Circle_mass[Circle_pr],
+                    Circle_mass,
+                    Circle_counter,
+                    Triangle_mass,
+                    Triangle_counter);
             Circle_pr++;
         }
     }
