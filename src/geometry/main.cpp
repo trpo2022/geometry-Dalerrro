@@ -18,6 +18,7 @@ int main()
     std::string storage[storage_size];
     std::string line;
     std::string file_name;
+    Circle Circle_mass[figure_limit];
     Triangle Triangle_mass[figure_limit];
 
 

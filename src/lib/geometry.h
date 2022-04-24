@@ -39,3 +39,6 @@ int Intersec_C(Point A, Point B, Point C, float r);
 
 void Circle_intersec(Circle C, Circle CM[], int size_CM, Triangle TM[], int size_TM);
 void Triangle_intersec(Triangle T, Circle CM[], int size_CM, Triangle TM[], int size_TM);
+
+void Circle_print(Circle C, std::string storage[]);
+void Triangle_print(Triangle T, std::string storage[]);
