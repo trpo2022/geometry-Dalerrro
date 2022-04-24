@@ -19,6 +19,7 @@ Point Point_analysis(int string, int& lfound, std::string storage[])
     std::string str = storage[string], str_r = "", numbers = "1234567890.-";
     found = str.find(")");
     if (found != std::string::npos) {
+        
         // X analysis
         l_number = str.find_first_of(numbers, lfound);
         for (r_number = l_number;
@@ -53,12 +54,14 @@ Circle Circle_analysis(int order, int string, std::string storage[])
     std::size_t found, r_number, l_number, rezfound;
     std::string x = storage[string], str_r = "", numbers = "1234567890";
     C.Order = order;
+
     found = x.find(",");
     if (found != std::string::npos) {
-         l_number = x.find_first_of(numbers);
+        l_number = x.find_first_of(numbers, found);
         r_number = x.find_last_of(numbers);
         rezfound = r_number - l_number + 1;
         str_r.append(x, l_number, rezfound);
+        
         C.r = atof(str_r.c_str());
 
         C.S = Pi * pow(C.r, 2);
