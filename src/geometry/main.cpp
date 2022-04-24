@@ -1,3 +1,5 @@
+#include "lib/geometry.h"
+
 #include <cstring>
 #include <fstream>
 #include <iostream>
@@ -8,50 +10,55 @@
 
 using namespace std;
 
-const double Pi = 3.14159265358979323;
-
-void Circle(int string, std::string storage[]){
-
-}
-
-void Triangle(int string, std::string storage[]){
-    
-}
-
-int main(){
+int main()
+{
     int counter = 0;
     int storage_size = 100;
     std::string storage[storage_size];
     std::string line;
-    std::ifstream in("wkt.wkt");
+    std::string file_name;
+    std::cout << "\n The program accepts format files as input .wkt!";
+    std::cout << "\n Enter the file name: ";
+    std::cin  >> file_name;
+    std::ifstream in (file_name);
     if (in.is_open()) {
         while (getline(in, line)) {
             storage[counter] = line;
             counter++;
         }
     } else {
-        printf("Open File Error");
+        printf(" !Open File Error\n !File not found");
     }
-    
+
     int verif_counter = 0;
+    int order_counter = 0;
     for (int counter_f = 0; counter_f < counter; counter_f++) {
         std::size_t found;
         found = storage[counter_f].find("circle");
         if (found != std::string::npos) {
             verif_counter++;
-            Circle(counter_f, storage);
+            order_counter++;
+            Circle(order_counter, counter_f, storage);
         }
 
         found = storage[counter_f].find("triangle");
         if (found != std::string::npos) {
             verif_counter++;
-            Triangle(counter_f, storage);
+            order_counter++;
+            Triangle(order_counter, counter_f, storage);
         }
 
         if (verif_counter == 0) {
-            printf("\nError in %d line", counter_f + 1);
+            printf("\n\n #Error in %d line, «circle» , «triangle»  or "
+                   "«polygon»  not found ",
+                   counter_f + 1);
+            std::cout << "\n " << counter_f + 1 << ". " << storage[counter_f]
+                      << std::endl;
         }
         verif_counter = 0;
     }
+
+    in.close();
+    std::cout << "\n\n End of programm\n" << std::endl;
     return 0;
 }
