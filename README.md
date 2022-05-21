@@ -13,4 +13,3 @@
 
 *bin/geometry*
 
-*bin/test*
