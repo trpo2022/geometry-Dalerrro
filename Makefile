@@ -47,6 +47,7 @@ $(OBJ_DIR)/%.o: %.cpp
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -I thirdparty $< -o $@ -lm
 	
 test: $(TEST_PATH)
+	./bin/test
 
 
 -include $(DEPS)

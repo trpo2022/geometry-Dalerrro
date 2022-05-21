@@ -12,8 +12,20 @@ using namespace std;
 
 const double Pi = 3.1415;
 
-// Analisis function
+// Geometric operations
+double C_S(double r)
+{
+    double S = Pi * pow(r, 2);
+    return S;
+}
 
+double C_P(double r)
+{
+    double P = 2 * Pi * r;
+    return P;
+}
+
+// Analisis function
 Point Point_analysis(int string, int& lfound, std::string storage[])
 {
     Point P;
@@ -54,6 +66,7 @@ Circle Circle_analysis(int order, int string, std::string storage[])
     Circle C;
     std::size_t found, r_number, l_number, rezfound;
     std::string x = storage[string], str_r = "", numbers = "1234567890";
+
     C.Order = order;
 
     found = x.find(",");
@@ -65,9 +78,9 @@ Circle Circle_analysis(int order, int string, std::string storage[])
 
         C.r = atof(str_r.c_str());
 
-        C.S = Pi * pow(C.r, 2);
+        C.S = C_S(C.r);
 
-        C.P = 2 * Pi * C.r;
+        C.P = C_P(C.r);
 
     } else {
         printf("Error ");
@@ -216,7 +229,7 @@ void Triangle_intersec(
     }
 }
 
-// Print
+// Printing function
 void Circle_print(Circle C, std::string storage[])
 {
     std::cout << "\n " << C.Order << ". " << storage[C.Order - 1]
