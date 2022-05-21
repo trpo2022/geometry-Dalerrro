@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun May 22 04:20:16 2022
+# Make data base, printed on Sun May 22 05:14:49 2022
 
 # Variables
 
@@ -141,7 +141,7 @@ XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 2107
+GIO_LAUNCHED_DESKTOP_FILE_PID = 4168
 # automatic
 %F = $(notdir $%)
 # environment
@@ -211,7 +211,7 @@ CC = g++
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-a7ae3d86-c3d7-424f-91aa-3f8eac2b767e.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-4a07a5d9-038e-4273-98c1-6b2c5c8b61a0.sock
 # default
 MAKE_VERSION := 4.2.1
 # environment
@@ -276,6 +276,7 @@ LC_ALL = C
 GJS_DEBUG_TOPICS = JS ERROR;JS LOG
 # automatic
 ^F = $(notdir $^)
+ 
 # makefile (from 'Makefile', line 32)
 DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d) $(TEST_OBJECTS:.o=.d)
 # default
@@ -286,7 +287,6 @@ SNAP_REEXEC =
 LIB_NAME = lib
 # environment
 CHROME_DESKTOP = code-url-handler.desktop
- 
 # environment
 WINDOWPATH = 2
 # default
@@ -298,9 +298,9 @@ GJS_DEBUG_OUTPUT = stderr
 # environment
 LANG = C
 # environment
-VSCODE_PID = 2158
+VSCODE_PID = 4219
 # variable set hash-table stats:
-# Load=144/1024=14%, Rehash=0, Collisions=24/313=8%
+# Load=144/1024=14%, Rehash=0, Collisions=26/321=8%
 
 # Pattern-specific Variable Values
 
@@ -329,7 +329,7 @@ bin/test: obj/test/geom-test.o obj/test/main.o obj/src/lib/lib.a
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 55):
+#  recipe to execute (from 'Makefile', line 56):
 	$(CC) $(CFLAGS) -I thirdparty $^ -o $@ $(LDFLAGS) $(LDLIBS) -lm
 
 all: bin/geometry
@@ -337,7 +337,9 @@ all: bin/geometry
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/8=0%
 
 .PHONY: test clean
 #  Implicit rule search has not been done.
@@ -346,7 +348,7 @@ all: bin/geometry
 
 obj/src/lib/lib.a: obj/src/lib/geometry.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-05-11 17:13:26.660744929
+#  Last modified 2022-05-22 05:09:38.9024837
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 44):
@@ -355,7 +357,7 @@ obj/src/lib/lib.a: obj/src/lib/geometry.o
 obj/src/lib/geometry.o: src/lib/geometry.cpp src/lib/geometry.cpp src/lib/geometry.h src/lib/geometry.cpp src/lib/geometry.h
 #  Implicit rule search has been done.
 #  Implicit/static pattern stem: 'src/lib/geometry'
-#  Last modified 2022-05-11 17:13:26.660744929
+#  Last modified 2022-05-22 05:09:38.9024837
 #  File has been updated.
 #  Successfully updated.
 #  recipe to execute (from 'Makefile', line 47):
@@ -377,7 +379,7 @@ obj/src/geometry/main.d:
 # Not a target:
 obj/test/geom-test.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-12 15:52:43.963769443
+#  Last modified 2022-05-22 05:08:46.001801042
 #  File has been updated.
 #  Successfully updated.
 
@@ -389,9 +391,15 @@ src/geometry/main.cpp:
 #  Successfully updated.
 
 # Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-11 17:09:45.558701649
+#  Last modified 2022-05-22 04:57:32.318143692
 #  File has been updated.
 #  Successfully updated.
 
@@ -400,6 +408,8 @@ test: bin/test
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
+#  recipe to execute (from 'Makefile', line 50):
+	./bin/test
 
 thirdparty/ctest.h:
 #  Implicit rule search has not been done.
@@ -416,7 +426,7 @@ obj/src/geometry/main.o: src/geometry/main.cpp
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) -I thirdparty $< -o $@ -lm
 	
 
-obj/test/geom-test.o: test/geom-test.cpp test/geom-test.cpp
+obj/test/geom-test.o: test/geom-test.cpp src/lib/geometry.h thirdparty/ctest.h test/geom-test.cpp src/lib/geometry.h thirdparty/ctest.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -435,9 +445,28 @@ test/main.cpp:
 
 bin/geometry: obj/src/geometry/main.o obj/src/lib/lib.a
 #  Implicit rule search has not been done.
+#  Implicit/static pattern stem: ''
 #  Last modified 2022-05-11 17:22:51.940561626
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := bin/geometry
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := obj/src/geometry/main.o obj/src/lib/lib.a
+# automatic
+# | := 
+# automatic
+# < := obj/src/geometry/main.o
+# automatic
+# ^ := obj/src/geometry/main.o obj/src/lib/lib.a
+# automatic
+# ? := obj/src/lib/lib.a
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/18=6%
 #  recipe to execute (from 'Makefile', line 41):
 	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ $(LDFLAGS) $(LDLIBS)
 
@@ -446,7 +475,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 60):
+#  recipe to execute (from 'Makefile', line 61):
 	$(RM) $(APP_PATH) $(TEST_PATH) $(LIB_PATH)
 	find $(OBJ_DIR) -name '*.o' -exec $(RM) '{}' \;
 	find $(OBJ_DIR) -name '*.d' -exec $(RM) '{}' \;
@@ -458,7 +487,7 @@ obj/geometry/main.o: src/geometry/main.cpp src/lib/geometry.h src/geometry/main.
 
 src/lib/geometry.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-11 16:00:29.612109474
+#  Last modified 2022-05-22 05:08:19.345506133
 #  File has been updated.
 #  Successfully updated.
 
@@ -471,38 +500,38 @@ test/geom-test.cpp:
 # Not a target:
 obj/src/lib/geometry.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-11 17:13:26.652745148
+#  Last modified 2022-05-22 05:09:38.894483585
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 obj/test/main.d:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-22 00:25:07.706239815
+#  Last modified 2022-05-22 05:07:32.501081793
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 src/lib/geometry.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-11 16:00:29.612109474
+#  Last modified 2022-05-22 05:09:35.486436079
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=25/1024=2%, Rehash=0, Collisions=0/86=0%
+# Load=25/1024=2%, Rehash=0, Collisions=0/95=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 47 / storage = 592 B / avg = 12 B
-# current buf: size = 8162 B / used = 592 B / count = 47 / avg = 12 B
+# strcache buffers: 1 (0) / strings = 47 / storage = 595 B / avg = 12 B
+# current buf: size = 8162 B / used = 595 B / count = 47 / avg = 12 B
 
-# strcache performance: lookups = 113 / hit rate = 58%
+# strcache performance: lookups = 126 / hit rate = 62%
 # hash-table stats:
-# Load=47/8192=1%, Rehash=0, Collisions=1/113=1%
-# Finished Make data base on Sun May 22 04:20:17 2022
+# Load=47/8192=1%, Rehash=0, Collisions=1/126=1%
+# Finished Make data base on Sun May 22 05:14:49 2022
 
  
