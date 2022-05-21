@@ -1,0 +1,9 @@
+make --dry-run --always-make --keep-going --print-directory
+make: Entering directory '/home/dalerio/geometry-Dalerrro'
+ 
+g++ -c -Wall -Wextra -Werror -I src -MP -MMD -I thirdparty src/geometry/main.cpp -o obj/src/geometry/main.o -lm
+g++ -c -Wall -Wextra -Werror -I src -MP -MMD -I thirdparty src/lib/geometry.cpp -o obj/src/lib/geometry.o -lm
+ar rcs obj/src/lib/lib.a obj/src/lib/geometry.o
+g++ -Wall -Wextra -Werror -I src -MP -MMD obj/src/geometry/main.o obj/src/lib/lib.a -o bin/geometry  
+make: Leaving directory '/home/dalerio/geometry-Dalerrro'
+ 
